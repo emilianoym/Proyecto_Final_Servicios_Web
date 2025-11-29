@@ -17,6 +17,11 @@ app.use(bodyParser.json());
 routerApi(app);
 setupSwagger(app);
 
+// Redirect root to docs
+app.get('/', (req, res) => {
+  res.redirect('/api-docs');
+});
+
 // Error Handler
 app.use(errorHandler);
 
