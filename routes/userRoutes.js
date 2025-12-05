@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-
 const { userServices } = require('../services/indexService');
 
 /**
@@ -44,9 +43,10 @@ router.get('/', async (req, res, next) => {
  *     tags: [Users]
  *     parameters:
  *       - in: path
- *         name: idUser
+ *         name: id
  *         schema:
- *           type: number
+ *           type: integer
+ *         example: 1
  *         required: true
  *         description: ID del usuario
  *     responses:
@@ -107,9 +107,10 @@ router.post('/', async (req, res, next) => {
  *     tags: [Users]
  *     parameters:
  *       - in: path
- *         name: idUser
+ *         name: id
  *         schema:
- *           type: number
+ *           type: integer
+ *         example: 1
  *         required: true
  *         description: ID del usuario
  *     requestBody:
@@ -147,9 +148,10 @@ router.patch('/:id', async (req, res, next) => {
  *     tags: [Users]
  *     parameters:
  *       - in: path
- *         name: idUser
+ *         name: id
  *         schema:
- *           type: number
+ *           type: integer
+ *         example: 1
  *         required: true
  *         description: ID del usuario
  *     responses:
@@ -167,8 +169,6 @@ router.delete('/:id', async (req, res, next) => {
     }
 });
 
-
-
 /**
  * @swagger
  * components:
@@ -181,7 +181,7 @@ router.delete('/:id', async (req, res, next) => {
  *           description: ID autogenerado de MongoDB
  *           example: 60d0fe4f5311236168a109cc
  *         idUser:
- *           type: number
+ *           type: integer
  *           description: ID numérico único
  *           example: 12345
  *         name:
@@ -203,7 +203,6 @@ router.delete('/:id', async (req, res, next) => {
  *         - name
  *         - email
  *         - password
- *         - id_number
  *       properties:
  *         name:
  *           type: string
