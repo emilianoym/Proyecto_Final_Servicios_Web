@@ -8,7 +8,7 @@ const { deviceServices } = require('../services/indexService');
  * @swagger
  * tags:
  *   - name: Devices
- *     description: Gestión de dispositivos y otras cosas
+ *     description: Gestión de dispositivos y su configuración
  */
 
 /**
