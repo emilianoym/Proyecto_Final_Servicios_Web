@@ -11,7 +11,7 @@ const options = {
     },
     servers: [
       {
-        url: "https://proyectofinalserviciosweb-production.up.railway.app",
+        url: "https://proyecto-final-servicios-web-z2nv.onrender.com/",
         description: "Producción",
       },
       {
