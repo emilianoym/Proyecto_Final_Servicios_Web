@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-
 const { zoneServices } = require('../services/indexService');
 
 /**
@@ -44,9 +43,10 @@ router.get('/', async (req, res, next) => {
  *     tags: [Zones]
  *     parameters:
  *       - in: path
- *         name: id_zone
+ *         name: id
  *         schema:
- *           type: number
+ *           type: integer
+ *         example: 1
  *         required: true
  *         description: ID de la zona
  *     responses:
@@ -107,9 +107,10 @@ router.post('/', async (req, res, next) => {
  *     tags: [Zones]
  *     parameters:
  *       - in: path
- *         name: id_zone
+ *         name: id
  *         schema:
- *           type: number
+ *           type: integer
+ *         example: 1
  *         required: true
  *         description: ID de la zona a actualizar
  *     requestBody:
@@ -128,7 +129,6 @@ router.post('/', async (req, res, next) => {
  *       404:
  *         description: Zona no encontrada
  */
-
 router.patch('/:id', async (req, res, next) => {
     try {
         const updatedZone = await zoneServices.updateZone(req.params.id, req.body);
@@ -146,9 +146,10 @@ router.patch('/:id', async (req, res, next) => {
  *     tags: [Zones]
  *     parameters:
  *       - in: path
- *         name: id_zone
+ *         name: id
  *         schema:
- *           type: number
+ *           type: integer
+ *         example: 1
  *         required: true
  *         description: ID de la zona a eliminar
  *     responses:
@@ -165,8 +166,6 @@ router.delete('/:id', async (req, res, next) => {
         next(e);
     }
 });
-
-
 
 /**
  * @swagger
@@ -201,7 +200,6 @@ router.delete('/:id', async (req, res, next) => {
  *       type: object
  *       required:
  *         - name
- *         - id_zone
  *       properties:
  *         name:
  *           type: string
@@ -212,27 +210,6 @@ router.delete('/:id', async (req, res, next) => {
  *         isActive:
  *           type: boolean
  *           example: true
- *
- *
- *     ZoneWithTechnicians:
- *       type: object
- *       properties:
- *         zone:
- *           $ref: "#/components/schemas/Zone"
- *         technicians_details:
- *           type: array
- *           items:
- *             type: object
- *             properties:
- *               id:
- *                 type: string
- *                 example: "65bd2145ff09ab123cc9876a"
- *               name:
- *                 type: string
- *                 example: "Carlos Mendoza"
- *               phone:
- *                 type: string
- *                 example: "4771234567"
  */
 
 module.exports = router;

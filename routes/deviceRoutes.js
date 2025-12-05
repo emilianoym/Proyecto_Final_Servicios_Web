@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-
 const { deviceServices } = require('../services/indexService');
 
 /**
@@ -44,10 +43,11 @@ router.get('/', async (req, res, next) => {
  *     tags: [Devices]
  *     parameters:
  *       - in: path
- *         name: id_device
+ *         name: id
  *         required: true
  *         schema:
- *           type: number
+ *           type: integer
+ *         example: 1
  *         description: ID del dispositivo
  *     responses:
  *       200:
@@ -99,10 +99,12 @@ router.post('/', async (req, res, next) => {
  *     tags: [Devices]
  *     parameters:
  *       - in: path
- *         name: id_device
+ *         name: id
  *         required: true
  *         schema:
- *           type: number
+ *           type: integer
+ *         example: 1
+ *         description: ID del dispositivo a actualizar
  *     requestBody:
  *       required: true
  *       content:
@@ -134,10 +136,12 @@ router.patch('/:id', async (req, res, next) => {
  *     tags: [Devices]
  *     parameters:
  *       - in: path
- *         name: id_device
+ *         name: id
  *         schema:
- *           type: number
+ *           type: integer
  *         required: true
+ *         example: 1
+ *         description: ID del dispositivo a eliminar
  *     responses:
  *       200:
  *         description: Dispositivo eliminado correctamente
@@ -152,8 +156,6 @@ router.delete('/:id', async (req, res, next) => {
         next(error);
     }
 });
-
-
 
 /**
  * @swagger
@@ -204,7 +206,7 @@ router.delete('/:id', async (req, res, next) => {
  *         - ownerId
  *         - zoneId
  *         - installedAt
- *         - status 
+ *         - status
  *       properties:
  *         serialNumber:
  *           type: string

@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-
 const { sensorServices } = require('../services/indexService');
 
 /**
@@ -44,11 +43,12 @@ router.get('/', async (req, res, next) => {
  *     tags: [Sensors]
  *     parameters:
  *       - in: path
- *         name: idSensor
+ *         name: id
  *         required: true
  *         schema:
- *           type: number
- *         description: idSensor del sensor
+ *           type: integer
+ *         example: 1
+ *         description: ID del sensor
  *     responses:
  *       200:
  *         description: Sensor encontrado
@@ -107,11 +107,12 @@ router.post('/', async (req, res, next) => {
  *     tags: [Sensors]
  *     parameters:
  *       - in: path
- *         name: idSensor
+ *         name: id
  *         required: true
- *         description: idSensor del sensor
  *         schema:
- *           type: number
+ *           type: integer
+ *         example: 2
+ *         description: ID del sensor a actualizar
  *     requestBody:
  *       required: true
  *       content:
@@ -147,11 +148,12 @@ router.patch('/:id', async (req, res, next) => {
  *     tags: [Sensors]
  *     parameters:
  *       - in: path
- *         name: idSensor
+ *         name: id
  *         required: true
- *         description: idSensor del sensor
  *         schema:
- *           type: number
+ *           type: integer
+ *         example: 1
+ *         description: ID del sensor a eliminar
  *     responses:
  *       200:
  *         description: Sensor eliminado correctamente
@@ -166,8 +168,6 @@ router.delete('/:id', async (req, res, next) => {
         next(error);
     }
 });
-
-
 
 /**
  * @swagger
@@ -205,7 +205,6 @@ router.delete('/:id', async (req, res, next) => {
  *         isActive:
  *           type: boolean
  *           example: true
- *
  *
  *     SensorInput:
  *       type: object
