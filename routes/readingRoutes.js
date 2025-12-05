@@ -5,55 +5,9 @@ const service = new ReadingService();
 
 /**
  * @swagger
- * components:
- *   schemas:
- *     Reading:
- *       type: object
- *       properties:
- *         readingId:
- *           type: number
- *           description: ID numérico autoincremental de la lectura
- *           example: 1
- *         idSensor:
- *           type: number
- *           description: ID numérico del sensor asociado
- *           example: 3
- *         time:
- *           type: string
- *           format: date-time
- *           description: Fecha y hora de la lectura
- *           example: "2025-01-20T15:30:00Z"
- *         value:
- *           type: number
- *           description: Valor de la lectura
- *           example: 26.4
- *
- *     ReadingInput:
- *       type: object
- *       required:
- *         - idSensor
- *         - value
- *       properties:
- *         idSensor:
- *           type: number
- *           description: ID numérico del sensor
- *           example: 3
- *         value:
- *           type: number
- *           description: Valor de la lectura
- *           example: 28.9
- *         time:
- *           type: string
- *           format: date-time
- *           description: Fecha opcional de la lectura
- *           example: "2025-01-20T14:00:00Z"
- */
-
-/**
- * @swagger
  * tags:
- *   name: Readings
- *   description: Gestión de lecturas de sensores
+ *   - name: Readings
+ *     description: Gestión de lecturas de sensores
  */
 
 /**
@@ -85,15 +39,16 @@ router.get('/', async (req, res, next) => {
  * @swagger
  * /api/readings/{id}:
  *   get:
- *     summary: Obtener una lectura por su readingId
+ *     summary: Obtener una lectura por ID
  *     tags: [Readings]
  *     parameters:
  *       - in: path
  *         name: id
  *         schema:
- *           type: number
+ *           type: integer
+ *         example: 1
  *         required: true
- *         description: readingId de la lectura
+ *         description: ID de la lectura
  *     responses:
  *       200:
  *         description: Lectura encontrada
@@ -154,9 +109,10 @@ router.post('/', async (req, res, next) => {
  *       - in: path
  *         name: id
  *         schema:
- *           type: number
+ *           type: integer
  *         required: true
- *         description: readingId de la lectura
+ *         example: 1
+ *         description: ID de la lectura a actualizar
  *     requestBody:
  *       required: true
  *       content:
@@ -194,9 +150,10 @@ router.patch('/:id', async (req, res, next) => {
  *       - in: path
  *         name: id
  *         schema:
- *           type: number
+ *           type: integer
  *         required: true
- *         description: readingId de la lectura
+ *         example: 1
+ *         description: ID de la lectura a eliminar
  *     responses:
  *       200:
  *         description: Lectura eliminada correctamente
@@ -206,10 +163,53 @@ router.patch('/:id', async (req, res, next) => {
 router.delete('/:id', async (req, res, next) => {
     try {
         const deletedReading = await service.delete(req.params.id);
-        res.json(deletedReading);
+        res.json({ message: 'Lectura eliminada correctamente', deletedReading });
     } catch (error) {
         next(error);
     }
 });
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Reading:
+ *       type: object
+ *       properties:
+ *         readingId:
+ *           type: number
+ *           description: ID numérico autoincremental de la lectura
+ *           example: 1
+ *         idSensor:
+ *           type: number
+ *           description: ID numérico del sensor asociado
+ *           example: 3
+ *         time:
+ *           type: string
+ *           format: date-time
+ *           description: Fecha y hora de la lectura
+ *           example: "2025-01-20T15:30:00Z"
+ *         value:
+ *           type: number
+ *           description: Valor de la lectura
+ *           example: 26.4
+ *
+ *     ReadingInput:
+ *       type: object
+ *       required:
+ *         - idSensor
+ *         - value
+ *       properties:
+ *         idSensor:
+ *           type: number
+ *           example: 3
+ *         value:
+ *           type: number
+ *           example: 28.9
+ *         time:
+ *           type: string
+ *           format: date-time
+ *           example: "2025-01-20T14:00:00Z"
+ */
 
 module.exports = router;
