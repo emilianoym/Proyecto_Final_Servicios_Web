@@ -44,9 +44,9 @@ router.get('/', async (req, res, next) => {
  *     tags: [Zones]
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: id_zone
  *         schema:
- *           type: string
+ *           type: number
  *         required: true
  *         description: ID de la zona
  *     responses:
@@ -107,9 +107,9 @@ router.post('/', async (req, res, next) => {
  *     tags: [Zones]
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: id_zone
  *         schema:
- *           type: string
+ *           type: number
  *         required: true
  *         description: ID de la zona a actualizar
  *     requestBody:
@@ -146,9 +146,9 @@ router.patch('/:id', async (req, res, next) => {
  *     tags: [Zones]
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: id_zone
  *         schema:
- *           type: string
+ *           type: number
  *         required: true
  *         description: ID de la zona a eliminar
  *     responses:

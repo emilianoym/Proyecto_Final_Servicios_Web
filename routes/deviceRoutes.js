@@ -8,7 +8,7 @@ const { deviceServices } = require('../services/indexService');
  * @swagger
  * tags:
  *   - name: Devices
- *     description: Gestión de dispositivos
+ *     description: Gestión de dispositivos y otras cosas
  */
 
 /**
@@ -44,10 +44,11 @@ router.get('/', async (req, res, next) => {
  *     tags: [Devices]
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: id_device
  *         required: true
  *         schema:
- *           type: string
+ *           type: number
+ *         description: ID del dispositivo
  *     responses:
  *       200:
  *         description: Dispositivo encontrado
@@ -98,10 +99,10 @@ router.post('/', async (req, res, next) => {
  *     tags: [Devices]
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: id_device
  *         required: true
  *         schema:
- *           type: string
+ *           type: number
  *     requestBody:
  *       required: true
  *       content:
@@ -133,9 +134,9 @@ router.patch('/:id', async (req, res, next) => {
  *     tags: [Devices]
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: id_device
  *         schema:
- *           type: string
+ *           type: number
  *         required: true
  *     responses:
  *       200:

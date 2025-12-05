@@ -4,6 +4,12 @@ const router = express.Router();
 
 const { userServices } = require('../services/indexService');
 
+/**
+ * @swagger
+ * tags:
+ *   - name: Users
+ *     description: Gestión de usuarios y su configuración
+ */
 
 /**
  * @swagger
@@ -38,9 +44,9 @@ router.get('/', async (req, res, next) => {
  *     tags: [Users]
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: idUser
  *         schema:
- *           type: string
+ *           type: number
  *         required: true
  *         description: ID del usuario
  *     responses:
@@ -101,9 +107,9 @@ router.post('/', async (req, res, next) => {
  *     tags: [Users]
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: idUser
  *         schema:
- *           type: string
+ *           type: number
  *         required: true
  *         description: ID del usuario
  *     requestBody:
@@ -141,9 +147,9 @@ router.patch('/:id', async (req, res, next) => {
  *     tags: [Users]
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: idUser
  *         schema:
- *           type: string
+ *           type: number
  *         required: true
  *         description: ID del usuario
  *     responses:
@@ -174,7 +180,7 @@ router.delete('/:id', async (req, res, next) => {
  *           type: string
  *           description: ID autogenerado de MongoDB
  *           example: 60d0fe4f5311236168a109cc
- *         id_number:
+ *         idUser:
  *           type: number
  *           description: ID numérico único
  *           example: 12345

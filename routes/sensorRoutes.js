@@ -44,7 +44,7 @@ router.get('/', async (req, res, next) => {
  *     tags: [Sensors]
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: idSensor
  *         required: true
  *         schema:
  *           type: number
@@ -107,7 +107,7 @@ router.post('/', async (req, res, next) => {
  *     tags: [Sensors]
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: idSensor
  *         required: true
  *         description: idSensor del sensor
  *         schema:
@@ -147,7 +147,7 @@ router.patch('/:id', async (req, res, next) => {
  *     tags: [Sensors]
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: idSensor
  *         required: true
  *         description: idSensor del sensor
  *         schema:
